@@ -3,37 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AndroidHosting</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Android Hosting</title>
   <style>
-    :root {
-      /* JetBrains Darcula / GitHub Dark palette */
-      --bg-0:       #0d1117;
-      --bg-1:       #161b22;
-      --bg-2:       #1c2128;
-      --bg-3:       #21262d;
-      --border:     #30363d;
-      --border-2:   #3d444d;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-      --text-1:     #e6edf3;
-      --text-2:     #8b949e;
-      --text-3:     #656d76;
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
 
-      /* Syntax accent colours */
-      --blue:       #58a6ff;
-      --blue-dim:   #1f6feb;
-      --green:      #3fb950;
-      --green-dim:  #238636;
-      --orange:     #d29922;
-      --red:        #f85149;
-      --purple:     #bc8cff;
-      --teal:       #39d353;
+    header {
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111827;
+      border-bottom: 1px solid #1e2d3d;
+    }
 
-      --radius-sm:  6px;
-      --radius-md:  8px;
-      --radius-lg:  12px;
+    .logo {
+      font-weight: bold;
+      color: #38bdf8;
+      font-size: 20px;
+    }
 
-      --mono: 'JetBrains Mono', monospace;
+    nav { display: flex; gap: 24px; align-items: center; }
+    nav a { color: #94a3b8; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    nav a:hover { color: #38bdf8; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 80px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 100px;
+      color: #38bdf8;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      color: #38bdf8;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: #94a3b8;
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      padding: 11px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-primary { background: #38bdf8; color: #0f172a; }
+    .btn-outline { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      max-width: 700px;
+      margin: 0 auto 70px;
+      background: #111827;
+      border: 1px solid #1e2d3d;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .stat { flex: 1; padding: 20px 16px; text-align: center; border-right: 1px solid #1e2d3d; }
+    .stat:last-child { border-right: none; }
+    .stat-value { font-size: 22px; font-weight: bold; color: #38bdf8; margin-bottom: 4px; }
+    .stat-label { font-size: 12px; color: #475569; }
+
+    .section {
+      padding: 20px 40px 70px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 32px;
+    }
+
+    .cards { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+
+    .card {
+      background: #111827;
+      padding: 24px 22px;
+      border-radius: 12px;
+      width: 280px;
+      border: 1px solid #1e2d3d;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: #38bdf8; transform: translateY(-3px); }
+    .card-icon { font-size: 26px; margin-bottom: 14px; }
+    .card h3 { font-size: 16px; color: #e2e8f0; margin-bottom: 10px; }
+    .card p { font-size: 14px; color: #64748b; line-height: 1.65; }
+
+    .cta {
+      text-align: center;
+      padding: 60px 20px;
+      background: #111827;
+      border-top: 1px solid #1e2d3d;
+      border-bottom: 1px solid #1e2d3d;
+    }
+    .cta h2 { font-size: 26px; color: #e2e8f0; margin-bottom: 12px; }
+    .cta p { color: #64748b; font-size: 15px; margin-bottom: 28px; }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px;
+      background: #111827;
+      color: #334155;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">AndroidHosting</div>
+    <nav>
+      <a href="#">Docs</a>
+      <a href="#">Network</a>
+      <a href="#">Pricing</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-badge">● System Online — v2.6</div>
+    <h1>Android Host System</h1>
+    <p>Platform untuk menghubungkan Android Host dan Remote Node dalam sistem terdistribusi real-time.</p>
+    <div class="btn-group">
+      <button class="btn btn-primary">Get Started</button>
+      <button class="btn btn-outline">View Docs</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">99.9%</div>
+      <div class="stat-label">Uptime</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">&lt;12ms</div>
+      <div class="stat-label">Latency</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">10K+</div>
+      <div class="stat-label">Devices</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">256-bit</div>
+      <div class="stat-label">Encryption</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Core Features</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Control System</h3>
+        <p>Kelola device Android sebagai host & remote dengan mudah dari satu dashboard.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>Real-time</h3>
+        <p>Komunikasi cepat antar node menggunakan relay system dengan latensi rendah.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📡</div>
+        <h3>Scalable</h3>
+        <p>Bisa dikembangkan untuk multi-device network tanpa batas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Siap untuk mulai?</h2>
+    <p>Setup hanya 5 menit. Hubungkan device Android pertamamu sekarang.</p>
+    <button class="btn btn-primary">Get Started Gratis</button>
+  </div>
+
+  <footer>
+    © 2026 AndroidHosting. All rights reserved.
+  </footer>
+
+</body>
+</html>
       --sans: 'Inter', sans-serif;
     }
 
